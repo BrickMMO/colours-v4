@@ -87,15 +87,14 @@ if (isset($_GET['key']) && $_GET['key'] == 'go')
     }
     
     message_set('Import Success', 'Colour list has been imported from Rebrickable.');
-    header_redirect('/admin/colours/import');
+    header_redirect('/admin/import');
 
 }
 
 define('APP_NAME', 'Colours');
-
 define('PAGE_TITLE', 'Import Colours');
-define('PAGE_SELECTED_SECTION', 'admin-content');
-define('PAGE_SELECTED_SUB_PAGE', '/admin/colours/import');
+define('PAGE_SELECTED_SECTION', 'admin-import');
+define('PAGE_SELECTED_SUB_PAGE', '/admin/import');
 
 include('../templates/html_header.php');
 include('../templates/nav_header.php');
@@ -123,11 +122,12 @@ $result = mysqli_query($connect, $query);
     Colours
 </h1>
 <p>
-    <a href="/city/dashboard">Dashboard</a> / 
-    <a href="/admin/colours/dashboard">Colours</a> / 
+    <a href="/admin/dashboard">Colours</a> / 
     Import Colours
 </p>
+
 <hr />
+
 <h2>Import Colours</h2>
 
 <p>
@@ -150,7 +150,7 @@ $result = mysqli_query($connect, $query);
 </ul>
             
 <a
-    href="/admin/colours/import/go"
+    href="/admin/import/go"
     class="w3-button w3-white w3-border"
     onclick="loading();"
 >
@@ -158,8 +158,6 @@ $result = mysqli_query($connect, $query);
 </a>
     
 <?php
-
-include('../templates/modal_city.php');
 
 include('../templates/main_footer.php');
 include('../templates/debug.php');

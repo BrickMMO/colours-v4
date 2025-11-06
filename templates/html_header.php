@@ -66,10 +66,16 @@
       let loadingOverlay = document.getElementById("loading-overlay");  
       loadingOverlay.style.display = "block";
 
-      setTimeout(function () {
+      setTimeout(function () {  
         loadingOverlay.style.transition = "0.5s";
         loadingOverlay.style.opacity = "1";
       }, 0);
+    }
+
+    function loadingFinished()
+    {
+      let loadingOverlay = document.getElementById("loading-overlay");  
+      loadingOverlay.style.display = "none";
     }
 
   </script>

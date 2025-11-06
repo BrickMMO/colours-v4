@@ -38,12 +38,6 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
     />
     Colours
 </h1>
-<p>
-    <a href="/city/dashboard">Dashboard</a> / 
-    Colours
-</p>
-
-<hr>
 
 <p>
     Number of colours imported: <span class="w3-tag w3-blue"><?=$colours_count?></span> 

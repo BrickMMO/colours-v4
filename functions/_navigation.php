@@ -5,42 +5,42 @@ function navigation_array($selected = false)
 
     $navigation = [
         [
-            'title' => 'City Portal',
+            'title' => 'Colours',
             'sections' => [
                 [
-                    'title' => 'QR Codes',
-                    'id' => 'qr-codes',
+                    'title' => 'Colours',
+                    'id' => 'admin-content',
                     'pages' => [
                         [
-                            'icon' => 'bm-qr',
-                            'url' => '/console/dashboard',
-                            'title' => 'Qr Codes',
+                            'icon' => 'colours',
+                            'url' => '/admin/dashboard',
+                            'title' => 'Colours',
                             'sub-pages' => [
                                 [
                                     'title' => 'Dashboard',
-                                    'url' => '/console/dashboard',
+                                    'url' => '/admin/dashboard',
                                     'colour' => 'red',
                                 ],[
-                                    'title' => 'New QR Code',
-                                    'url' => '/console/add',
+                                    'title' => 'Import Colours',
+                                    'url' => '/admin/import',
                                     'colour' => 'red',
                                 ],[
                                     'br' => '---',
                                 ],[
-                                    'title' => 'Visit QR App',
-                                    'url' => 'https://qr.brickmmo.com',
+                                    'title' => 'Visit Colors App',
+                                    'url' => 'https://colours.brickmmo.com',
                                     'colour' => 'orange',
                                     'icon' => 'fa-solid fa-arrow-up-right-from-square',
                                 ],[
                                     'br' => '---',
                                 ],[
                                     'title' => 'Uptime Report',
-                                    'url' => '/uptime/qr',
+                                    'url' => '/uptime/colours',
                                     'colour' => 'orange',
                                     'icons' => 'bm-uptime',
                                 ],[
                                     'title' => 'Stats Report',
-                                    'url' => '/stats/qr',
+                                    'url' => '/stas/colours',
                                     'colour' => 'orange',
                                     'icons' => 'bm-stats',
                                 ],

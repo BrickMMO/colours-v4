@@ -7,7 +7,7 @@ define('APP_NAME', 'Colours');
 
 define('PAGE_TITLE', 'Dashboard');
 define('PAGE_SELECTED_SECTION', 'admin-content');
-define('PAGE_SELECTED_SUB_PAGE', '/admin/colours/dashboard');
+define('PAGE_SELECTED_SUB_PAGE', '/admin/dashboard');
 
 include('../templates/html_header.php');
 include('../templates/nav_header.php');
@@ -80,6 +80,7 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
 
 <?php endif; ?>
 
+<!--
 <a
     href="/admin/colours/import"
     class="w3-button w3-white w3-border"
@@ -127,10 +128,9 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
         </div>
     </div>
 </div>
+-->
 
 <?php
-
-include('../templates/modal_city.php');
 
 include('../templates/main_footer.php');
 include('../templates/debug.php');

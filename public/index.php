@@ -34,8 +34,7 @@ else $_user = false;
 /**
  * Get domain.
  */
-if(is_numeric(strpos($_SERVER['HTTP_HOST'], 'qr.'))) $domain = 'qr';
-elseif(is_numeric(strpos($_SERVER['HTTP_HOST'], 'sso.'))) $domain = 'sso';
+if(is_numeric(strpos($_SERVER['HTTP_HOST'], 'colours.'))) $domain = 'colours';
 else
 {
 
@@ -148,6 +147,8 @@ elseif($parts[0] == 'api')
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
         header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
     }
+
+    header('Content-Type: application/json; charset=utf-8');
 
 }
 

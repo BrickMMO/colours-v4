@@ -17,6 +17,8 @@ include('../templates/message.php');
 
 <div class="w3-center">
 
+    <h1>BrickMMO Colour Palette</h1>
+
     <input class="w3-input w3-border w3-margin" type="text" placeholder="Seach using RGB or colour name" style="max-width: 400px; display: inline-block;" id="search">
 
 </div>

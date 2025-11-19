@@ -31,7 +31,7 @@ $record = mysqli_fetch_assoc($result);
     </div>
     <hr>
     <div class="w3-container w3-padding">
-        <div style="display: inline-block; position: relative; width: 100%; height: 150px; margin-bottom: 16px;">
+        <div style="display: inline-block; position: relative; width: 100%;  height: 150px; margin-bottom: 16px;">
             <div style="background-color: #<?=$record['rgb']?>; width: 100%; height: 100%;"></div>
             <?php if($record['is_trans'] == 'yes'): ?>
                 <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: url('https://cdn.brickmmo.com/images@1.0.0/trans-checkers.png') repeat; background-position: center; opacity: 0.5; border-radius: 8px;"></span>

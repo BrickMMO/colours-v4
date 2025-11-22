@@ -165,7 +165,7 @@ include('../templates/message.php');
 
     </div>
 
-    <!--
+    <?php /* ?>
     <table class="w3-table w3-bordered w3-striped w3-margin-bottom">
 
         <?php while ($display = mysqli_fetch_assoc($result)): ?>
@@ -192,7 +192,7 @@ include('../templates/message.php');
         <?php endwhile; ?>
 
     </table>
-                        -->
+    <?php */ ?>
 
 <?php else: ?>
 
@@ -211,7 +211,8 @@ include('../templates/message.php');
         {
             echo '<a href="'.ENV_DOMAIN.'/q';
             if($i > 1) echo '/page/'.$i;
-            echo '/'.$q.'" class="w3-button';
+            if(isset($q)) echo '/'.$q; 
+            echo '" class="w3-button';
             if($i == $current_page) echo ' w3-border';
             echo '">'.$i.'</a>';
         }
@@ -222,44 +223,47 @@ include('../templates/message.php');
 
 </nav>
 
-
-
 <script>
 
-let searchButton = document.getElementById('search-button');
-let searchTerm = document.getElementById('search-term');
+(function() {
 
-function performSearch() 
-{
+    let searchButton = document.getElementById('search-button');
 
-    let query = searchTerm.value.trim();
-
-    // Remove anything that's not letters, numbers, or spaces
-    query = query.replace(/[^a-zA-Z0-9\s]/g, '');
-    // Replace spaces with hyphens
-    query = query.replace(/\s+/g, '-');
-    window.location.href = '/q/' + query;
-
-}
-
-searchButton.addEventListener('click', function(event) 
-{
-
-    event.preventDefault();
-    performSearch();
-
-});
-
-searchTerm.addEventListener('keypress', function(event) 
-{
-
-    if (event.key === 'Enter') 
+    searchButton.addEventListener('click', function(event) 
     {
+
         event.preventDefault();
         performSearch();
+
+    });
+
+    let searchTerm = document.getElementById('search-term');
+
+    searchTerm.addEventListener('keypress', function(event) 
+    {
+
+        if (event.key === 'Enter') 
+        {
+            event.preventDefault();
+            performSearch();
+        }
+
+    });
+
+    function performSearch() 
+    {
+
+        let query = searchTerm.value.trim();
+
+        // Remove anything that's not letters, numbers, or spaces
+        query = query.replace(/[^a-zA-Z0-9\s]/g, '');
+        // Replace spaces with hyphens
+        query = query.replace(/\s+/g, '-');
+        window.location.href = '/q/' + query;
+
     }
 
-});
+})();
 
 </script>
 

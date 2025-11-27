@@ -138,26 +138,31 @@ include('../templates/message.php');
 
             <div style="width: calc(33.3% - 16px); box-sizing: border-box; display: flex; flex-direction: column;">
                 <div class="w3-card-4 w3-margin-top" style="max-width:100%; height: 100%; display: flex; flex-direction: column;">
+
                     <header class="w3-container w3-green">
                         <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             <i class="fa-${colour.is_trans == 'yes' ? 'regular' : 'solid'} fa-square"></i>
                             <?=$display['name']?>
                         </h4>
                     </header>
-                    <a href="/details/<?=$display['id']?>" class="w3-margin" style="position: relative; background-color: #<?=$display['rgb']?>; height: 100px; display: block;">
-                        <?php if($display['is_trans'] == 'yes'): ?>
-                            <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: url('https://cdn.brickmmo.com/images@1.0.0/trans-checkers.png') repeat; background-position: center; opacity: 0.5;"></span>
-                        <?php endif; ?>
-                    </a>
-                    <div class="w3-container w3-center w3-margin-bottom">
-                        <a href="#" onclick="return copy('#<?=$display['rgb']?>');" class="w3-button w3-white w3-border ">
-                            <i class="fa-solid fa-copy"></i>
-                            #<?=$display['rgb']?>
+
+                    <div class="w3-margin">
+                        <a href="/details/<?=$display['id']?>" style="position: relative; background-color: #<?=$display['rgb']?>; height: 100px; display: block;">
+                            <?php if($display['is_trans'] == 'yes'): ?>
+                                <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: url('https://cdn.brickmmo.com/images@1.0.0/trans-checkers.png') repeat; background-position: center; opacity: 0.5;"></span>
+                            <?php endif; ?>
                         </a>
-                        <a href="/details/<?=$display['id']?>" class="w3-button w3-white w3-border ">
-                            <i class="fa-solid fa-circle-info"></i> Details
-                        </a>
+                        <div class="w3-container w3-center w3-margin-top">
+                            <a href="#" onclick="return copy('#<?=$display['rgb']?>');" class="w3-button w3-white w3-border ">
+                                <i class="fa-solid fa-copy"></i>
+                                #<?=$display['rgb']?>
+                            </a>
+                            <a href="/details/<?=$display['id']?>" class="w3-button w3-white w3-border ">
+                                <i class="fa-solid fa-circle-info"></i> Details
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -196,7 +201,10 @@ include('../templates/message.php');
 
 <?php else: ?>
 
-    <p class="w3-center">No results found for <strong><?=htmlspecialchars(str_replace('-', ' ', $q))?></strong>.</p>
+    <p class="w3-center">
+        No results found for 
+        <span class="w3-bold"><?=htmlspecialchars(str_replace('-', ' ', $q))?></span>.
+    </p>
 
 <?php endif; ?>
 

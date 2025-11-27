@@ -25,7 +25,6 @@ $record = mysqli_fetch_assoc($result);
 
 ?>
 
-
 <div class="w3-center">
     <h1><?=$record['name']?></h1>
 </div>
@@ -39,11 +38,13 @@ $record = mysqli_fetch_assoc($result);
             <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: url('https://cdn.brickmmo.com/images@1.0.0/trans-checkers.png') repeat; background-position: center; opacity: 0.5; border-radius: 8px;"></span>
         <?php endif; ?>
     </div>
-    <p><strong>Name:</strong> <?=$record['name']?></p>
-    <p><strong>RGB:</strong> #<?=$record['rgb']?></p>
-    <p><strong>Transparent:</strong> <?=$record['is_trans'] == 'yes' ? 'Yes' : 'No'?></p>
-    <p><strong>Externals:</strong> <?=$record['externals'] ?: '-'?></p>
-    <p><strong>ID:</strong> <?=$record['id']?></p>
+    <p>Name: <span class="w3-bold"><?=$record['name']?></span></p>
+    <p>
+        RGB: <span class="w3-bold">#<?=$record['rgb']?></span>
+        <br>
+        Transparent: <span class="w3-bold"><?=$record['is_trans'] == 'yes' ? 'Yes' : 'No'?></span>
+    </p>
+    <p>Externals: <span class="w3-bold"><?=$record['externals'] ?: '-'?></span></p>
 </div>
 
 <hr>

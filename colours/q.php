@@ -170,41 +170,19 @@ include('../templates/message.php');
 
     </div>
 
-    <?php /* ?>
-    <table class="w3-table w3-bordered w3-striped w3-margin-bottom">
-
-        <?php while ($display = mysqli_fetch_assoc($result)): ?>
-            
-            <tr>
-                <td>
-                    <div style="background-color: #<?=$display['rgb']?>; height: 100px; width: 200px; border: 1px solid #;"></div>
-                </td>
-                <td class="w3-padding">
-                    <a href="/details/<?=$display['id']?>"><?=$display['name']?></a>
-                    <small>
-                        <?php if($display['externals']): ?>
-                            <br>
-                            Externals: <?=$display['externals']?>
-                        <?php endif; ?>
-                    </small>
-                </td>
-                <td class="w3-right-align">
-                    <a href="/details/<?=$display['id']?>" class="w3-button w3-white w3-border ">
-                        <i class="fa-solid fa-circle-info"></i> Details
-                    </a>
-                </td>
-            </tr>
-        <?php endwhile; ?>
-
-    </table>
-    <?php */ ?>
-
 <?php else: ?>
 
-    <p class="w3-center">
-        No results found for 
-        <span class="w3-bold"><?=htmlspecialchars(str_replace('-', ' ', $q))?></span>.
-    </p>
+    <div class="w3-panel w3-light-grey">
+        <h3 class="w3-margin-top"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> No Results Found</h3>
+        <?php if(isset($q)): ?>
+            <p>
+                No results found for 
+                <span class="w3-bold"><?=htmlspecialchars(str_replace('-', ' ', $q))?></span>.
+            </p>
+        <?php else: ?>
+            <p>There are currently no colours available.</p>
+        <?php endif; ?>
+    </div>
 
 <?php endif; ?>
 

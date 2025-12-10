@@ -122,7 +122,7 @@ $result = mysqli_query($connect, $query);
     Colours
 </h1>
 <p>
-    <a href="/admin/dashboard">Colours</a> / 
+    <a href="<?=ENV_DOMAIN?>/admin/dashboard">Colours</a> / 
     Import Colours
 </p>
 
@@ -150,7 +150,7 @@ $result = mysqli_query($connect, $query);
 </ul>
             
 <a
-    href="/admin/import/go"
+    href="<?=ENV_DOMAIN?>/admin/import/go"
     class="w3-button w3-white w3-border"
     onclick="loading();"
 >

@@ -73,7 +73,7 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
 
 <!--
 <a
-    href="/admin/import"
+    href="<?=ENV_DOMAIN?>/admin/import"
     class="w3-button w3-white w3-border"
 >
     <i class="fa-solid fa-download"></i> Import Colours
@@ -93,7 +93,7 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
             <div class="w3-container w3-padding">Uptime Status Summary</div>
             <footer class="w3-container w3-border-top w3-padding">
                 <a
-                    href="/admin/uptime/colours"
+                    href="<?=ENV_DOMAIN?>/admin/uptime/colours"
                     class="w3-button w3-border w3-white"
                 >
                     <i class="fa-regular fa-file-lines fa-padding-right"></i>
@@ -110,7 +110,7 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
             <div class="w3-container w3-padding">App Statistics Summary</div>
             <footer class="w3-container w3-border-top w3-padding">
                 <a
-                    href="/stats/colours"
+                    href="<?=ENV_DOMAIN?>/stats/colours"
                     class="w3-button w3-border w3-white"
                 >
                     <i class="fa-regular fa-chart-bar fa-padding-right"></i> Full Report

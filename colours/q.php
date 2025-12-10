@@ -147,7 +147,7 @@ include('../templates/message.php');
                     </header>
 
                     <div class="w3-margin">
-                        <a href="/details/<?=$display['id']?>" style="position: relative; background-color: #<?=$display['rgb']?>; height: 100px; display: block;">
+                        <a href="<?=ENV_DOMAIN?>/details/<?=$display['id']?>" style="position: relative; background-color: #<?=$display['rgb']?>; height: 100px; display: block;">
                             <?php if($display['is_trans'] == 'yes'): ?>
                                 <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: url('https://cdn.brickmmo.com/images@1.0.0/trans-checkers.png') repeat; background-position: center; opacity: 0.5;"></span>
                             <?php endif; ?>
@@ -157,7 +157,7 @@ include('../templates/message.php');
                                 <i class="fa-solid fa-copy"></i>
                                 #<?=$display['rgb']?>
                             </a>
-                            <a href="/details/<?=$display['id']?>" class="w3-button w3-white w3-border ">
+                            <a href="<?=ENV_DOMAIN?>/details/<?=$display['id']?>" class="w3-button w3-white w3-border ">
                                 <i class="fa-solid fa-circle-info"></i> Details
                             </a>
                         </div>

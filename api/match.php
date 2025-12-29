@@ -32,7 +32,9 @@ if(mysqli_num_rows($result))
 
         if($colour['distance'] < 0.25)
         {
+
             $colours[]= $colour;
+
         }
         
     }
@@ -40,8 +42,10 @@ if(mysqli_num_rows($result))
 }
 
 usort($colours, function($first, $second) {
+
     if ($first['distance'] == $second['distance']) return 0;
     return ($first['distance'] < $second['distance']) ? -1 : 1;
+
 });
 
 if(count($colours))

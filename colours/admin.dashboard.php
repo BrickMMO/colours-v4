@@ -12,7 +12,6 @@ include('../templates/html_header.php');
 include('../templates/nav_header.php');
 include('../templates/nav_sidebar.php');
 include('../templates/main_header.php');
-
 include('../templates/message.php');
 
 $query = 'SELECT * 
@@ -25,8 +24,6 @@ $colours_count = mysqli_num_rows($result);
 $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
 
 ?>
-
-<!-- CONTENT -->
 
 <h1 class="w3-margin-top w3-margin-bottom">
     <img
@@ -63,10 +60,13 @@ $colours_last_import = setting_fetch('COLOURS_LAST_IMPORT');
 
 <?php else: ?>
 
-    <p>
-        Colour data has not yet been imported from 
-        <a href="https://rebrickable.com/api/">Rebrickable</a>.
-    </p>
+    <div class="w3-panel w3-light-grey">
+        <h3 class="w3-margin-top"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Import Error</h3>
+        <p>
+            Colour data has not yet been imported from 
+            <a href="https://rebrickable.com/api/">Rebrickable</a>.
+        </p>
+    </div>
 
 <?php endif; ?>
 

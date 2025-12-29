@@ -11,14 +11,17 @@ if(isset($_GET['key']))
  
 }
 
-// Get page number from URL if set
 if(isset($_GET['page']) && is_numeric($_GET['page']))
 {
+
     $current_page = (int)$_GET['page'];
+
 }
 else
 {
+
     $current_page = 1;
+
 }
 
 define('APP_NAME', 'Colours');
@@ -29,72 +32,70 @@ define('PAGE_SELECTED_SUB_PAGE', '');
 include('../templates/html_header.php');
 include('../templates/nav_header.php');
 include('../templates/main_header.php');
-
 include('../templates/message.php');
 
-    // Pagination setup
-    $results_per_page = 24;
-    $offset = ($current_page - 1) * $results_per_page;
+// Pagination setup
+$results_per_page = 24;
+$offset = ($current_page - 1) * $results_per_page;
 
-    $where_clause = '';
+$where_clause = '';
 
-    if(isset($q))
+if(isset($q))
+{
+
+    // Split search term by dashes
+    $search_terms = explode('-', $q);
+    
+    // Build WHERE clause for multiple terms
+    $where_conditions = [];
+    foreach($search_terms as $term) 
     {
 
-        // Split search term by dashes
-        $search_terms = explode('-', $q);
-        
-        // Build WHERE clause for multiple terms
-        $where_conditions = [];
-        foreach($search_terms as $term) 
+        $term = trim($term);
+
+        if(!empty($term)) 
         {
-
-            $term = trim($term);
-
-            if(!empty($term)) 
-            {
-                $term = mysqli_real_escape_string($connect, $term);
-                $where_conditions[] = 'colours.rgb LIKE "%'.$term.'%"';
-                $where_conditions[] = 'colours.name LIKE "%'.$term.'%"';
-                $where_conditions[] = 'externals.name LIKE "%'.$term.'%"';
-            }
-
+            $term = mysqli_real_escape_string($connect, $term);
+            $where_conditions[] = 'colours.rgb LIKE "%'.$term.'%"';
+            $where_conditions[] = 'colours.name LIKE "%'.$term.'%"';
+            $where_conditions[] = 'externals.name LIKE "%'.$term.'%"';
         }
-        
-        $where_clause .= 'WHERE ('.implode(' OR ', $where_conditions).')';
 
     }
+    
+    $where_clause .= 'WHERE ('.implode(' OR ', $where_conditions).')';
 
-    // Count total results
-    $count_query = 'SELECT COUNT(DISTINCT colours.id) AS total
-        FROM colours 
-        LEFT JOIN externals
-        ON colours.id = externals.colour_id
-        '.$where_clause;
-    $count_result = mysqli_query($connect, $count_query);
-    $count_row = mysqli_fetch_assoc($count_result);
-    $total_results = $count_row['total'];
-    $total_pages = ceil($total_results / $results_per_page);
+}
 
-    // Get paginated results
-    $query = 'SELECT DISTINCT colours.name,
-        colours.rgb,
-        colours.id,
-        colours.is_trans,
-        (
-            SELECT GROUP_CONCAT(DISTINCT externals.name SEPARATOR ", ")
-            FROM externals
-            WHERE colours.id = externals.colour_id
-        ) AS externals
-        FROM colours 
-        LEFT JOIN externals
-        ON colours.id = externals.colour_id
-        '.$where_clause.'
-        GROUP BY colours.id
-        ORDER BY colours.name DESC
-        LIMIT '.$offset.', '.$results_per_page;
-    $result = mysqli_query($connect, $query);
+// Count total results
+$count_query = 'SELECT COUNT(DISTINCT colours.id) AS total
+    FROM colours 
+    LEFT JOIN externals
+    ON colours.id = externals.colour_id
+    '.$where_clause;
+$count_result = mysqli_query($connect, $count_query);
+$count_row = mysqli_fetch_assoc($count_result);
+$total_results = $count_row['total'];
+$total_pages = ceil($total_results / $results_per_page);
 
+// Get paginated results
+$query = 'SELECT DISTINCT colours.name,
+    colours.rgb,
+    colours.id,
+    colours.is_trans,
+    (
+        SELECT GROUP_CONCAT(DISTINCT externals.name SEPARATOR ", ")
+        FROM externals
+        WHERE colours.id = externals.colour_id
+    ) AS externals
+    FROM colours 
+    LEFT JOIN externals
+    ON colours.id = externals.colour_id
+    '.$where_clause.'
+    GROUP BY colours.id
+    ORDER BY colours.name DESC
+    LIMIT '.$offset.', '.$results_per_page;
+$result = mysqli_query($connect, $query);
 
 ?>
 

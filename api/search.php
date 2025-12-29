@@ -2,14 +2,22 @@
 
 if(!isset($_GET['key']))
 {
+
     $_GET['key'] = '';
+
 }
 
 $query = 'SELECT * 
-    FROM colours 
-    '.($_GET['key'] ? 'WHERE rgb LIKE "%'.mysqli_real_escape_string($connect, $_GET['key']).'%"
-        OR name LIKE "%'.mysqli_real_escape_string($connect, $_GET['key']).'%"' : '' ).'
-    ORDER BY name'; 
+    FROM colours ';
+
+if($_GET['key'])
+{
+
+    $query .= 'WHERE rgb LIKE "%'.mysqli_real_escape_string($connect, $_GET['key']).'%"
+        OR name LIKE "%'.mysqli_real_escape_string($connect, $_GET['key']).'%" ';
+}
+
+$query .= 'ORDER BY name'; 
 $result = mysqli_query($connect, $query);
 
 if(mysqli_num_rows($result))
